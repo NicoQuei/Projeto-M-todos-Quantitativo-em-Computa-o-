@@ -72,16 +72,16 @@ tabela_escolaridade_raca_rel_linha = round(prop.table(tabela_escolaridade_raca, 
 
 # Gênero
 pie(freq_genero$percent,
-  labels = paste(freq_genero$genero, "-", round(freq_genero$percent,3), "%"),
-  main = "Distribuição de Gênero",
-  col = c("green", "steelblue", "red"))
+    labels = paste(freq_genero$genero, "-", round(freq_genero$percent,3), "%"),
+    main = "Distribuição de Gênero",
+    col = c("green", "steelblue", "red"))
 
 
 # Meio empregado
 pie(freq_meio$percent,
-  labels = paste(freq_meio$meio_empregado, "-", round(freq_meio$percent,3), "%"),
-  main = "Meios usados",
-  col = c("green", "steelblue", "yellow", "red"))
+    labels = paste(freq_meio$meio_empregado, "-", round(freq_meio$percent,3), "%"),
+    main = "Meios usados",
+    col = c("green", "steelblue", "yellow", "red"))
 
 
 # ===================================
@@ -91,19 +91,19 @@ pie(freq_meio$percent,
 
 # Dia da semana
 barplot(freq_dia$n,
-  names.arg = freq_dia$dia_da_semana,
-  main = "Distribuição por Dia da Semana",
-  xlab = "Dia da Semana",
-  col = "steelblue",
-  las = 1)
+        names.arg = freq_dia$dia_da_semana,
+        main = "Distribuição por Dia da Semana",
+        xlab = "Dia da Semana",
+        col = "steelblue",
+        las = 1)
 
 # Escolaridade
 barplot(freq_escolaridade$n,
-  names.arg = freq_escolaridade$escolaridade_da_vitima,
-  main = "Distribuição por Escolaridade da Vítima",
-  col = "orange",
-  las = 1,
-  cex.names = 0.7)
+        names.arg = freq_escolaridade$escolaridade_da_vitima,
+        main = "Distribuição por Escolaridade da Vítima",
+        col = "orange",
+        las = 1,
+        cex.names = 0.7)
 
 
 # ===================================
@@ -121,8 +121,7 @@ freq_ano = dados %>%
   count(ano = format(as.Date(data), "%Y"))
 
 # Hora
-freq_hora = dados %>%
-  count(hora = hora)
+CVLHORA=hour(dados$hora)
 
 
 # Gráficos de linha
@@ -130,24 +129,24 @@ freq_hora = dados %>%
 
 # Mês
 plot(as.numeric(freq_mes$mes), freq_mes$n, type="o",
-  xlab="Mês", ylab="Número de Ocorrências",
-  main="Ocorrências por Mês",
-  xaxt="n")
+     xlab="Mês", ylab="Número de Ocorrências",
+     main="Ocorrências por Mês",
+     xaxt="n")
 axis(1, at=1:12, labels=month.abb)
 
 # Ano
 plot(as.numeric(freq_ano$ano), freq_ano$n, type="o",
-  xlab="Ano", ylab="Número de Ocorrências",
-  main="Ocorrências por Ano")
+     xlab="Ano", ylab="Número de Ocorrências",
+     main="Ocorrências por Ano")
 
 # Hora
-plot(as.numeric(freq_hora$hora), freq_hora$n, type="o",
-  xlab="Hora do Dia", ylab="Número de Ocorrências",
-  main="Ocorrências por Hora")
+plot(as.numeric(names(tabela_hora)), as.numeric(tabela_hora),
+     type="o", xlab="Hora do Dia", ylab="Número de Ocorrências",
+     main="Ocorrências por Hora")
 
 
 
-# ===================================================
+  # ===================================================
 # Medidas de posição e separatrizes para as variáveis
 # ===================================================
 
@@ -198,8 +197,9 @@ IQR(dados$idade_da_vitima_num, na.rm = TRUE)
 # =========================
 
 boxplot(dados$idade_da_vitima_num,
-  main = "Boxplot da Idade da Vítima",
-  ylab = "Idade (anos)",
-  col = "lightblue",
-  horizontal = FALSE,
-  notch = TRUE)
+        main = "Boxplot da Idade da Vítima",
+        ylab = "Idade (anos)",
+        col = "lightblue",
+        horizontal = FALSE,
+        notch = TRUE)
+  
